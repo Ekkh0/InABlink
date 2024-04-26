@@ -19,7 +19,7 @@ struct LandingView: View {
             NavigationLink {
                 
             } label: {
-                Image(systemName: "arrowshape.right.fill")
+                Image(systemName: "arrowshape.right")
                     .font(.system(size: 100))
                     .frame(width: 250, height: 125)
                     .cornerRadius(15)
