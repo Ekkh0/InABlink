@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		5F351FD12BDA691C002C5FB3 /* GestureTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD02BDA691C002C5FB3 /* GestureTestApp.swift */; };
-		5F351FD32BDA691C002C5FB3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD22BDA691C002C5FB3 /* ContentView.swift */; };
+		5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD22BDA691C002C5FB3 /* LandingView.swift */; };
 		5F351FD52BDA691D002C5FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F351FD42BDA691D002C5FB3 /* Assets.xcassets */; };
 		5F351FD82BDA691D002C5FB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F351FD72BDA691D002C5FB3 /* Preview Assets.xcassets */; };
+		5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */; };
+		5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */; };
+		5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FF12BDB88E2002C5FB3 /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F351FCD2BDA691C002C5FB3 /* GestureTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GestureTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F351FCD2BDA691C002C5FB3 /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F351FD02BDA691C002C5FB3 /* GestureTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureTestApp.swift; sourceTree = "<group>"; };
-		5F351FD22BDA691C002C5FB3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5F351FD22BDA691C002C5FB3 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		5F351FD42BDA691D002C5FB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F351FD72BDA691D002C5FB3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGExtension.swift; sourceTree = "<group>"; };
+		5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBlinkDetection.swift; sourceTree = "<group>"; };
+		5F351FF12BDB88E2002C5FB3 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +41,7 @@
 		5F351FC42BDA691C002C5FB3 = {
 			isa = PBXGroup;
 			children = (
-				5F351FCF2BDA691C002C5FB3 /* GestureTest */,
+				5F351FCF2BDA691C002C5FB3 /* InABlink */,
 				5F351FCE2BDA691C002C5FB3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,20 +49,22 @@
 		5F351FCE2BDA691C002C5FB3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5F351FCD2BDA691C002C5FB3 /* GestureTest.app */,
+				5F351FCD2BDA691C002C5FB3 /* InABlink.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5F351FCF2BDA691C002C5FB3 /* GestureTest */ = {
+		5F351FCF2BDA691C002C5FB3 /* InABlink */ = {
 			isa = PBXGroup;
 			children = (
+				5F351FF42BDB88F8002C5FB3 /* Components */,
+				5F351FF32BDB88EB002C5FB3 /* Views */,
+				5F351FE12BDA9D88002C5FB3 /* BlinkDetection */,
 				5F351FD02BDA691C002C5FB3 /* GestureTestApp.swift */,
-				5F351FD22BDA691C002C5FB3 /* ContentView.swift */,
 				5F351FD42BDA691D002C5FB3 /* Assets.xcassets */,
 				5F351FD62BDA691D002C5FB3 /* Preview Content */,
 			);
-			path = GestureTest;
+			path = InABlink;
 			sourceTree = "<group>";
 		};
 		5F351FD62BDA691D002C5FB3 /* Preview Content */ = {
@@ -67,12 +75,45 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5F351FE12BDA9D88002C5FB3 /* BlinkDetection */ = {
+			isa = PBXGroup;
+			children = (
+				5F351FE62BDA9DBF002C5FB3 /* Extension */,
+				5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */,
+			);
+			path = BlinkDetection;
+			sourceTree = "<group>";
+		};
+		5F351FE62BDA9DBF002C5FB3 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		5F351FF32BDB88EB002C5FB3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5F351FD22BDA691C002C5FB3 /* LandingView.swift */,
+				5F351FF12BDB88E2002C5FB3 /* GameView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5F351FF42BDB88F8002C5FB3 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5F351FCC2BDA691C002C5FB3 /* GestureTest */ = {
+		5F351FCC2BDA691C002C5FB3 /* InABlink */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5F351FDB2BDA691D002C5FB3 /* Build configuration list for PBXNativeTarget "GestureTest" */;
+			buildConfigurationList = 5F351FDB2BDA691D002C5FB3 /* Build configuration list for PBXNativeTarget "InABlink" */;
 			buildPhases = (
 				5F351FC92BDA691C002C5FB3 /* Sources */,
 				5F351FCA2BDA691C002C5FB3 /* Frameworks */,
@@ -82,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = GestureTest;
+			name = InABlink;
 			productName = GestureTest;
-			productReference = 5F351FCD2BDA691C002C5FB3 /* GestureTest.app */;
+			productReference = 5F351FCD2BDA691C002C5FB3 /* InABlink.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5F351FC82BDA691C002C5FB3 /* Build configuration list for PBXProject "GestureTest" */;
+			buildConfigurationList = 5F351FC82BDA691C002C5FB3 /* Build configuration list for PBXProject "InABlink" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5F351FCC2BDA691C002C5FB3 /* GestureTest */,
+				5F351FCC2BDA691C002C5FB3 /* InABlink */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +178,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F351FD32BDA691C002C5FB3 /* ContentView.swift in Sources */,
+				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
+				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
 				5F351FD12BDA691C002C5FB3 /* GestureTestApp.swift in Sources */,
+				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
+				5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,8 +316,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GestureTest/Preview Content\"";
+				DEVELOPMENT_TEAM = RHGD2V8746;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -300,8 +346,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GestureTest/Preview Content\"";
+				DEVELOPMENT_TEAM = RHGD2V8746;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -323,7 +371,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5F351FC82BDA691C002C5FB3 /* Build configuration list for PBXProject "GestureTest" */ = {
+		5F351FC82BDA691C002C5FB3 /* Build configuration list for PBXProject "InABlink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F351FD92BDA691D002C5FB3 /* Debug */,
@@ -332,7 +380,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5F351FDB2BDA691D002C5FB3 /* Build configuration list for PBXNativeTarget "GestureTest" */ = {
+		5F351FDB2BDA691D002C5FB3 /* Build configuration list for PBXNativeTarget "InABlink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5F351FDC2BDA691D002C5FB3 /* Debug */,
