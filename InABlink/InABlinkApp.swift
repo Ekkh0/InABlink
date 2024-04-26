@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct GestureTestApp: App {
+struct InABlinkApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingView()
         }
     }
 }

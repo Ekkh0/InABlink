@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5F351FD12BDA691C002C5FB3 /* GestureTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD02BDA691C002C5FB3 /* GestureTestApp.swift */; };
+		5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */; };
 		5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD22BDA691C002C5FB3 /* LandingView.swift */; };
 		5F351FD52BDA691D002C5FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F351FD42BDA691D002C5FB3 /* Assets.xcassets */; };
 		5F351FD82BDA691D002C5FB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F351FD72BDA691D002C5FB3 /* Preview Assets.xcassets */; };
@@ -18,7 +18,7 @@
 
 /* Begin PBXFileReference section */
 		5F351FCD2BDA691C002C5FB3 /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F351FD02BDA691C002C5FB3 /* GestureTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureTestApp.swift; sourceTree = "<group>"; };
+		5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InABlinkApp.swift; sourceTree = "<group>"; };
 		5F351FD22BDA691C002C5FB3 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		5F351FD42BDA691D002C5FB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F351FD72BDA691D002C5FB3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -60,7 +60,7 @@
 				5F351FF42BDB88F8002C5FB3 /* Components */,
 				5F351FF32BDB88EB002C5FB3 /* Views */,
 				5F351FE12BDA9D88002C5FB3 /* BlinkDetection */,
-				5F351FD02BDA691C002C5FB3 /* GestureTestApp.swift */,
+				5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */,
 				5F351FD42BDA691D002C5FB3 /* Assets.xcassets */,
 				5F351FD62BDA691D002C5FB3 /* Preview Content */,
 			);
@@ -180,7 +180,7 @@
 			files = (
 				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
 				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
-				5F351FD12BDA691C002C5FB3 /* GestureTestApp.swift in Sources */,
+				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
 				5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */,
 			);
@@ -315,7 +315,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GestureTest/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InABlink/Preview Content\"";
 				DEVELOPMENT_TEAM = RHGD2V8746;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -330,7 +330,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Test1.GestureTest;
+				PRODUCT_BUNDLE_IDENTIFIER = Test1.InABlink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -345,7 +345,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"GestureTest/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"InABlink/Preview Content\"";
 				DEVELOPMENT_TEAM = RHGD2V8746;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -360,7 +360,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Test1.GestureTest;
+				PRODUCT_BUNDLE_IDENTIFIER = Test1.InABlink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
