@@ -112,11 +112,11 @@ class FaceDetectionViewController: NSObject, ObservableObject{
       to: result.boundingBox) {
 //        print("\(leftEye)")
       
-      if(polygonArea(points: leftEye)<100 && !didBlink){
+      if(polygonArea(points: leftEye)<180 && !didBlink){
         didBlink.toggle()
         blinkCounter+=1
         print("Blinked! Number of blink: \(blinkCounter)")
-      }else if(polygonArea(points: leftEye)>100 && didBlink){
+      }else if(polygonArea(points: leftEye)>180 && didBlink){
         didBlink.toggle()
         print("Out of Blink!")
       }

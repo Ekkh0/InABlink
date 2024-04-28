@@ -14,6 +14,7 @@
 		5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */; };
 		5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */; };
 		5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FF12BDB88E2002C5FB3 /* GameView.swift */; };
+		5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGExtension.swift; sourceTree = "<group>"; };
 		5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBlinkDetection.swift; sourceTree = "<group>"; };
 		5F351FF12BDB88E2002C5FB3 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 		5F351FF42BDB88F8002C5FB3 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
 				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
 				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
+				5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */,
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
 				5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */,
 			);
