@@ -12,10 +12,10 @@ struct GameView: View {
     @State var roundWon: Bool = false
     @State var roundLost: Bool = false
     @State private var score = 0
-    @State private var highScore = UserDefaults.standard.integer(forKey: "highScore")
     @State private var timeRemaining = 30
     @State private var timer: Timer?
     @State var difficulty : Int = 0
+    @State var scores: [Int] = UserDefaults.standard.array(forKey: "scoreMem") as? [Int] ?? []
     
     var body: some View {
         VStack {
@@ -33,7 +33,7 @@ struct GameView: View {
                             punishment()
                         }
                 }
-                .padding()
+                .frame(width: 350)
 //                .onChange(of: blinkDetection.didBlink) {
 //                    if blinkDetection.didBlink {
 //                        generateGrid()
@@ -59,7 +59,7 @@ struct GameView: View {
             }
             
             Text("Score: \(score)")
-            Text("High Score: \(highScore)")
+            Text("High Score: \(scores.max() ?? 0)")
             Text("Time: \(timeRemaining)")
         }
         .navigationBarBackButtonHidden(true)
@@ -70,17 +70,10 @@ struct GameView: View {
         score = 0
         timeRemaining = 30
         startTimer()
-//        generateGrid()
     }
     
     func nextRound() {
         score += timeRemaining // Score based on remaining time
-        if score > highScore {
-            highScore = score
-            UserDefaults.standard.set(highScore, forKey: "highScore")
-        }
-        
-//        generateGrid()
     }
     
     func punishment(){
@@ -96,7 +89,9 @@ struct GameView: View {
         isGameRunning = false
         resetTimer()
         difficulty = 0
-//        print(gridCount)
+        
+        scores.append(score)
+        UserDefaults.standard.set(scores, forKey: "scoreMem")
     }
     
     func startTimer() {

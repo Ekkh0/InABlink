@@ -18,37 +18,39 @@ struct ColorGrid: View {
     @Binding var difficulty : Int
 //    @State private var gridCount = 2 + self.difficulty // Initial grid size
     var gridCount: Int{
-        return 2 + self.difficulty
+        return 2 + self.difficulty<6 ? 2 + self.difficulty : 6
     }
 //    @Binding var didBlink : Bool
     
     var body: some View {
-        VStack{
-            ForEach(0..<circles.count, id: \.self) { row in
-                HStack {
-                    ForEach(0..<self.circles[row].count, id: \.self) { column in
-                        Circle()
-                            .foregroundColor(self.circles[row][column].color)
-                            .frame(width: 50, height: 50)
-                            .rotationEffect(Angle.degrees(self.rotationDegrees))
-                            .onTapGesture {
-                                if row == self.correctCircleRow && column == self.correctCircleColumn {
-                                    roundWon.toggle()
-                                    difficulty+=1
-                                    generateGrid()
-                                } else {
-                                    roundLost.toggle()
+        GeometryReader{geometry in
+            VStack(spacing: 0){
+                ForEach(0..<circles.count, id: \.self) { row in
+                    HStack {
+                        ForEach(0..<self.circles[row].count, id: \.self) { column in
+                            Circle()
+                                .foregroundColor(self.circles[row][column].color)
+                                .frame(width: (geometry.size.width) / CGFloat(gridCount), height: (geometry.size.height) / CGFloat(gridCount))
+                                .rotationEffect(Angle.degrees(self.rotationDegrees))
+                                .onTapGesture {
+                                    if row == self.correctCircleRow && column == self.correctCircleColumn {
+                                        roundWon.toggle()
+                                        difficulty+=1
+                                        generateGrid()
+                                    } else {
+                                        roundLost.toggle()
+                                    }
                                 }
-                            }
+                        }
+                    }
+                    .onAppear(){
+                        generateGrid()
                     }
                 }
             }
-        }
-        .onAppear(){
-            generateGrid()
-        }
-        .onChange(of: blinkDetection.didBlink) {
-            generateGrid()
+            .onChange(of: blinkDetection.didBlink, initial: true) {
+                generateGrid()
+            }
         }
     }
     

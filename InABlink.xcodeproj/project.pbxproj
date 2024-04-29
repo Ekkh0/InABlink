@@ -15,6 +15,9 @@
 		5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */; };
 		5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FF12BDB88E2002C5FB3 /* GameView.swift */; };
 		5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */; };
+		5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B592BDE198300E140D3 /* MathQuiz.swift */; };
+		5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B5B2BDE458200E140D3 /* Tile.swift */; };
+		5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		5F351FEF2BDB799D002C5FB3 /* EyeBlinkDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EyeBlinkDetection.swift; sourceTree = "<group>"; };
 		5F351FF12BDB88E2002C5FB3 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrid.swift; sourceTree = "<group>"; };
+		5F616B592BDE198300E140D3 /* MathQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuiz.swift; sourceTree = "<group>"; };
+		5F616B5B2BDE458200E140D3 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +65,10 @@
 		5F351FCF2BDA691C002C5FB3 /* InABlink */ = {
 			isa = PBXGroup;
 			children = (
+				5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */,
 				5F351FF42BDB88F8002C5FB3 /* Components */,
 				5F351FF32BDB88EB002C5FB3 /* Views */,
 				5F351FE12BDA9D88002C5FB3 /* BlinkDetection */,
-				5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */,
 				5F351FD42BDA691D002C5FB3 /* Assets.xcassets */,
 				5F351FD62BDA691D002C5FB3 /* Preview Content */,
 			);
@@ -107,6 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */,
+				5F616B592BDE198300E140D3 /* MathQuiz.swift */,
+				5F616B5B2BDE458200E140D3 /* Tile.swift */,
+				5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -184,8 +193,11 @@
 				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
 				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
 				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
+				5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */,
 				5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */,
+				5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */,
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
+				5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */,
 				5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
