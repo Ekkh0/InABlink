@@ -88,12 +88,9 @@ struct SplashScreenView: View {
             switch animationState {
             case .folded:
                 FoldedPhoneView()
-                    .transition(.slide)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation(.easeInOut(duration: 1)) {
                                 animationState = .unfolded
-                            }
                         }
                     }
             case .unfolded:
@@ -101,22 +98,18 @@ struct SplashScreenView: View {
 //                    .transition(.slide)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation {
                                 animationState = .zoomed
-                            }
                         }
                     }
             case .zoomed:
                 ZoomedPhoneView()
 //                    .transition(.move(edge: .bottom))
-                    .frame(height: UIScreen.main.bounds.height * 1)
+//                    .frame(height: UIScreen.main.bounds.height * 1)
 //                    .transition(.slide)
 //                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .scale))
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                            withAnimation {
                                 animationState = .eyesopened
-                            }
                         }
                     }.matchedGeometryEffect(id: "id", in: namespace)
             case .eyesopened:
@@ -124,9 +117,7 @@ struct SplashScreenView: View {
                     .transition(.opacity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                            withAnimation {
                                 animationState = .eyesclosed
-                            }
                         }
                     }
             case .eyesclosed:
@@ -134,9 +125,7 @@ struct SplashScreenView: View {
                     .transition(.opacity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                            withAnimation {
                                 animationState = .eyesopen
-                            }
                         }
                     }
             case .eyesopen:
@@ -144,9 +133,7 @@ struct SplashScreenView: View {
                     .transition(.opacity)
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                            withAnimation {
                                 animationState = .eyesclos
-                            }
                         }
                     }
             case .eyesclos:
@@ -165,10 +152,8 @@ struct SplashScreenView: View {
 //                    .transition(.blurReplace)
 //                    .transition(.asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom)))
                     .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            withAnimation(.easeInOut(duration: 0.5)) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                                 animationState = .home
-                            }
                         }
                     }
             case .home:
@@ -178,7 +163,7 @@ struct SplashScreenView: View {
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(hex: "#FFFAF1").edgesIgnoringSafeArea(.all))
+        .background(Color(hex: "#FFFAF1").ignoresSafeArea())
         
     }
 }
@@ -204,7 +189,7 @@ struct ZoomedPhoneView: View {
         ZStack {
             Image("beforehomescreen")
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .clipShape(TopCornerRadius(radius: 30))
             .offset(y: 180)
             Image("matatertutup")
@@ -222,7 +207,7 @@ struct EyesView: View {
         ZStack {
             Image("beforehomescreen")
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .clipShape(TopCornerRadius(radius: 30))
             .offset(y: 180)
             Image("mataterbuka")
@@ -242,7 +227,7 @@ struct BeforeHomeScreenView: View {
         ZStack {
             Image("beforehomescreen")
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .clipShape(TopCornerRadius(radius: 30))
             .offset(y: 180)
             Image("matatertutup")
@@ -260,6 +245,7 @@ struct BeforeHomeScreenView: View {
                     }
                 }
         }
+        .zIndex(5)
     }
 }
 
@@ -267,41 +253,29 @@ struct BeforeHomeScreenView: View {
 struct HomeScreenView: View {
     @State var offsetY: CGFloat = 180
     @State var finalVisible = false
+    @State var revealMenu: Bool = false
     
     var body: some View {
-//        ZStack {
-//            Color(hex: "#FFFAF1").edgesIgnoringSafeArea(.all)
-//            Image("home_screen")
-//                .resizable()
-//                .scaledToFill()
-//                .offset(y: offsetY)
-//                .transition(.opacity)
-//                .onAppear(){
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//                        withAnimation(.easeInOut(duration: 1)) {
-//                            offsetY = 0
-//                        }
-//                    }
-//                }
-//        }
         ZStack {
             Image("beforehomescreen")
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
                 .clipShape(TopCornerRadius(radius: 30))
                 .edgesIgnoringSafeArea(.all)
             .offset(y: offsetY)
+//            .opacity(revealMenu ? 1 : 0)
             .onAppear(){
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
                     withAnimation(.easeInOut(duration: 0.4)) {
                         offsetY = 0
+//                        revealMenu.toggle()
                     }
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                    withAnimation(.easeInOut(duration: 0.4)) {
-                        finalVisible = true
-                    }
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                    withAnimation(.easeInOut(duration: 0.4)) {
+//                        finalVisible = true
+//                    }
+//                }
             }
             if finalVisible{
                 Image("final")
@@ -318,7 +292,6 @@ struct HomeScreenView: View {
                         }
                     }
             }
-            
         }
     }
 }

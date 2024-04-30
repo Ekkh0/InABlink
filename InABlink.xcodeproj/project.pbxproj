@@ -22,6 +22,7 @@
 		5FEA4F422BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA4F412BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf */; };
 		5FEA4F462BDFFDDE00D03973 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F452BDFFDDE00D03973 /* Fonts.swift */; };
 		5FEA4F482BE0AA0200D03973 /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F472BE0AA0100D03973 /* Particle.swift */; };
+		5FEA4F4A2BE0D38800D03973 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F492BE0D38800D03973 /* MenuView.swift */; };
 		814933082BE0449200B5D260 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814933072BE0449200B5D260 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		5FEA4F442BDFFD2300D03973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5FEA4F452BDFFDDE00D03973 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		5FEA4F472BE0AA0100D03973 /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
+		5FEA4F492BE0D38800D03973 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		814933072BE0449200B5D260 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				5F351FD22BDA691C002C5FB3 /* LandingView.swift */,
 				5F351FF12BDB88E2002C5FB3 /* GameView.swift */,
 				814933072BE0449200B5D260 /* SplashScreen.swift */,
+				5FEA4F492BE0D38800D03973 /* MenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
 				5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */,
 				5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */,
+				5FEA4F4A2BE0D38800D03973 /* MenuView.swift in Sources */,
 				5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */,
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
 				5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */,
@@ -366,12 +370,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InABlink/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InABlink;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -397,12 +401,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InABlink/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = InABlink;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

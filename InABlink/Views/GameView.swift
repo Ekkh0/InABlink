@@ -12,7 +12,8 @@ struct GameView: View {
     @State var roundWon: Bool = false
     @State var roundLost: Bool = false
     @State private var score = 0
-    @State private var timeRemaining = 30
+    @State private var timeRemaining = 60
+    @State private var timeTotal = 60
     @State private var timer: Timer?
     @State var difficulty : Int = 0
     @State var scores: [Int] = UserDefaults.standard.array(forKey: "scoreMem") as? [Int] ?? []
@@ -20,10 +21,22 @@ struct GameView: View {
     @State var isLoadingDone: Bool = false
     @State var loadingScreen: Bool = false
     @State var timesUpScreen: Bool = false
+    @State var startGameToggle: Bool = false
+    @State var tapped: Bool = false
+    @State var isRevealSpalshScreenDone: Bool = false
     
     var body: some View {
         VStack {
             ZStack{
+                SplashScreenView()
+                    .zIndex(4)
+                    .opacity(isRevealSpalshScreenDone ? 0 : 1)
+                    .ignoresSafeArea()
+                    .onAppear{
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.7) {
+                            isRevealSpalshScreenDone.toggle()
+                        }
+                    }
                 if loadingScreen{
                     PulsingCircle()
                         .zIndex(2)
@@ -53,6 +66,7 @@ struct GameView: View {
                                         .foregroundColor(.orange)
                                         .shadow(radius: 2, y: 2)
                                         .onTapGesture {
+                                            resetTimer()
                                             endGame()
                                         }
                                     ZStack {
@@ -62,7 +76,7 @@ struct GameView: View {
                                             .foregroundColor(Color.background)
                                             .frame(width: 200, height: 200)
                                         Circle()
-                                            .trim(from: 0, to: CGFloat(Double(timeRemaining) / Double(30)))
+                                            .trim(from: 0, to: CGFloat(Double(timeRemaining) / Double(timeTotal)))
                                             .stroke(.orange, lineWidth: 25)
                                             .frame(width: 175, height: 175)
                                             .rotationEffect(.degrees(-90))
@@ -108,29 +122,36 @@ struct GameView: View {
                     //                }
                 } else {
                     VStack {
-                        Image(systemName: "eye")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                        Spacer()
-                        Text("High Score: \(scores.max() ?? 0)")
-                        Spacer()
-                        Button(action: startGame) {
-                            Image(systemName: "arrowshape.right")
-                                .font(.system(size: 100))
-                                .frame(width: 250, height: 125)
-                                .cornerRadius(15)
-                                .overlay{
-                                    RoundedRectangle(cornerRadius: 15)
-                                        .stroke(style: /*@START_MENU_TOKEN@*/StrokeStyle()/*@END_MENU_TOKEN@*/)
+                        MenuView(highScore: scores.max() ?? 0, startGameToggle: $startGameToggle, tapped: $tapped)
+                            .onChange(of: startGameToggle) {
+                                if startGameToggle{
+                                    tapped.toggle()
+                                    startGame()
                                 }
-                        }
+                            }
+                        //                        Image(systemName: "eye")
+                        //                            .resizable()
+                        //                            .aspectRatio(contentMode: .fit)
+                        //                        Spacer()
+                        //                        Text("High Score: \(scores.max() ?? 0)")
+                        //                        Spacer()
+                        //                        Button(action: startGame) {
+                        //                            Image(systemName: "arrowshape.right")
+                        //                                .font(.system(size: 100))
+                        //                                .frame(width: 250, height: 125)
+                        //                                .cornerRadius(15)
+                        //                                .overlay{
+                        //                                    RoundedRectangle(cornerRadius: 15)
+                        //                                        .stroke(style: /*@START_MENU_TOKEN@*/StrokeStyle()/*@END_MENU_TOKEN@*/)
+                        //                                }
+                        //                        }
                     }
                 }
                 
                 if timesUpScreen{
                     timesUp()
                         .onAppear{
-                            Timer.scheduledTimer(withTimeInterval: 4.5, repeats: false) { _ in
+                            Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
                                 resetTimer()
                                 endGame()
                             }
@@ -150,7 +171,7 @@ struct GameView: View {
             timesUpScreen = false
             isGameRunning = true
             score = 0
-            timeRemaining = 30
+            timeRemaining = 60
             startTimer()
         }
     }
@@ -171,6 +192,9 @@ struct GameView: View {
         //        gridCount = 2
         isGameRunning = false
         difficulty = 0
+        tapped = false
+        startGameToggle = false
+        print(tapped)
         
         scores.append(score)
         UserDefaults.standard.set(scores, forKey: "scoreMem")
