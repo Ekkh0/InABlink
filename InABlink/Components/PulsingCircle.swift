@@ -17,31 +17,54 @@ struct PulsingCircleAnimation: View {
     @State var duration: CGFloat = 1
     
     var body: some View {
-            Circle()
-                .fill(color)
-                .zIndex(index)
-                .frame(width: size, height: size)
-                .shadow(color: Color.black.opacity(0.4), radius: 0, x: 0, y: 3)
-                .scaleEffect(pulsate ? max : min)
-                .animation(Animation.easeInOut(duration: duration).repeatCount(1))
-                .onAppear {
-                    self.pulsate.toggle()
-                }
+        Circle()
+            .fill(color)
+            .zIndex(index)
+            .frame(width: size, height: size)
+            .shadow(color: Color.black.opacity(0.4), radius: 0, x: 0, y: 3)
+            .scaleEffect(pulsate ? max : min)
+            .animation(Animation.easeInOut(duration: duration).repeatCount(1))
+            .onAppear {
+                self.pulsate.toggle()
+            }
     }
 }
 
 struct PulsingCircle: View {
-    var duration: CGFloat = 2
+    var duration: CGFloat = 1.5
+    @State private var isStackVisible = true
     
     var body: some View {
         ZStack{
-            PulsingCircleAnimation(color: Color.cyan, min: 0, max: 10, index: 4, duration: 1.78)
-                .padding()
-            PulsingCircleAnimation(color: Color.lilac, min: 0, max: 10, index: 3, duration: 1.5)
-            PulsingCircleAnimation(color: Color.lilacLight, min: 0, max: 10, index: 2, duration: 1.28)
-                .padding()
-            PulsingCircleAnimation(color: Color.blue, min: 0, max: 10, index: 1, duration: duration)
-                .padding()
+            if isStackVisible{
+                ZStack{
+                    PulsingCircleAnimation(color: Color.inner, min: 0, max: 10, index: 4, duration: duration)
+                        .padding()
+                    PulsingCircleAnimation(color: Color.innerMid, min: 0, max: 10, index: 3, duration: duration-0.3)
+                    PulsingCircleAnimation(color: Color.outerMid, min: 0, max: 10, index: 2, duration: duration-0.6)
+                        .padding()
+                    PulsingCircleAnimation(color: Color.outer, min: 0, max: 10, index: 1, duration: duration-0.8)
+                        .padding()
+                }
+            }
+            
+            if !isStackVisible{
+                ZStack{
+                    PulsingCircleAnimation(color: Color.outer, min: 10, max: 0, index: 1, duration: duration)
+                        .padding()
+                    PulsingCircleAnimation(color: Color.outerMid, min: 10, max: 0, index: 2, duration: duration-0.3)
+                    PulsingCircleAnimation(color: Color.innerMid, min: 10, max: 0, index: 3, duration: duration-0.6)
+                        .padding()
+                    PulsingCircleAnimation(color: Color.inner, min: 10, max: 0, index: 4, duration: duration-0.8)
+                        .padding()
+                }
+            }
+            
+        }
+        .onAppear(){
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+                    self.isStackVisible = false
+            }
         }
     }
 }

@@ -16,41 +16,55 @@ struct ColorGrid: View {
     @Binding var roundWon : Bool
     @Binding var roundLost : Bool
     @Binding var difficulty : Int
-//    @State private var gridCount = 2 + self.difficulty // Initial grid size
+    @State var winOrLose : Bool = false
+    //    @State private var gridCount = 2 + self.difficulty // Initial grid size
     var gridCount: Int{
-        return 2 + self.difficulty<6 ? 2 + self.difficulty : 6
+        return 2 + self.difficulty/4<8 ? 2 + self.difficulty/4 : 8
     }
-//    @Binding var didBlink : Bool
     
     var body: some View {
-        GeometryReader{geometry in
-            VStack(spacing: 0){
-                ForEach(0..<circles.count, id: \.self) { row in
-                    HStack {
-                        ForEach(0..<self.circles[row].count, id: \.self) { column in
-                            Circle()
-                                .foregroundColor(self.circles[row][column].color)
-                                .frame(width: (geometry.size.width) / CGFloat(gridCount), height: (geometry.size.height) / CGFloat(gridCount))
-                                .rotationEffect(Angle.degrees(self.rotationDegrees))
-                                .onTapGesture {
-                                    if row == self.correctCircleRow && column == self.correctCircleColumn {
-                                        roundWon.toggle()
-                                        difficulty+=1
-                                        generateGrid()
-                                    } else {
-                                        roundLost.toggle()
+        ZStack{
+            GeometryReader{geometry in
+                VStack(spacing: 0){
+                    ForEach(0..<circles.count, id: \.self) { row in
+                        HStack(spacing: 0) {
+                            ForEach(0..<self.circles[row].count, id: \.self) { column in
+                                Circle()
+                                    .foregroundColor(self.circles[row][column].color)
+                                    .frame(width: (geometry.size.width - CGFloat(gridCount * 10)) / CGFloat(gridCount), height: (geometry.size.height - CGFloat(gridCount * 10)) / CGFloat(gridCount))
+                                    .rotationEffect(Angle.degrees(self.rotationDegrees))
+                                    .onTapGesture {
+                                        if row == self.correctCircleRow && column == self.correctCircleColumn {
+                                            roundWon.toggle()
+                                            difficulty+=1
+                                            winOrLose = true
+                                            generateGrid()
+                                        } else {
+                                            winOrLose = false
+                                            roundLost.toggle()
+                                        }
                                     }
-                                }
+                                    .shadow(color: Color.black.opacity(0.4), radius: 5, x: 0, y: 3)
+                                    .padding(5)
+                            }
                         }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .onAppear(){
+                }
+                .onAppear(){
+                    generateGrid()
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onChange(of: blinkDetection.didBlink) {
+                    if blinkDetection.didBlink{
+                        let generator = UIImpactFeedbackGenerator(style: .medium)
+                        generator.prepare()
+                        generator.impactOccurred()
                         generateGrid()
                     }
                 }
             }
-            .onChange(of: blinkDetection.didBlink, initial: true) {
-                generateGrid()
-            }
+//            EffectView(correct: $winOrLose)
         }
     }
     

@@ -16,60 +16,143 @@ struct GameView: View {
     @State private var timer: Timer?
     @State var difficulty : Int = 0
     @State var scores: [Int] = UserDefaults.standard.array(forKey: "scoreMem") as? [Int] ?? []
+    @State private var isCounting = true
+    @State var isLoadingDone: Bool = false
+    @State var loadingScreen: Bool = false
+    @State var timesUpScreen: Bool = false
     
     var body: some View {
         VStack {
-            Text("In A Blink")
-                .font(.title)
-                .padding()
-            
-            if isGameRunning {
-                VStack {
-                    ColorGrid(roundWon: $roundWon, roundLost: $roundLost, difficulty: $difficulty)
-                        .onChange(of: roundWon) {
-                            nextRound()
-                        }
-                        .onChange(of: roundLost) {
-                            punishment()
+            ZStack{
+                if loadingScreen{
+                    PulsingCircle()
+                        .zIndex(2)
+                        .onAppear{
+                            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                                withAnimation {
+                                    self.isLoadingDone = true
+                                }
+                            }
                         }
                 }
-                .frame(width: 300, height: 500)
-//                .onChange(of: blinkDetection.didBlink) {
-//                    if blinkDetection.didBlink {
-//                        generateGrid()
-//                    }
-//                }
-            } else {
-                VStack {
-                    Image(systemName: "eye")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Spacer()
-                    Button(action: startGame) {
-                        Image(systemName: "arrowshape.right")
-                            .font(.system(size: 100))
-                            .frame(width: 250, height: 125)
-                            .cornerRadius(15)
-                            .overlay{
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(style: /*@START_MENU_TOKEN@*/StrokeStyle()/*@END_MENU_TOKEN@*/)
+                //                .frame(width: 300, height: 500)
+                //                .onChange(of: blinkDetection.didBlink) {
+                //                    if blinkDetection.didBlink {
+                //                        generateGrid()
+                //                    }
+                //                }
+                if isGameRunning {
+                    ZStack{
+                        if isLoadingDone{
+                            VStack {
+                                HStack(alignment: .top){
+                                    Image(systemName: "chevron.left")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 60, height: 30)
+                                        .foregroundColor(.orange)
+                                        .shadow(radius: 2, y: 2)
+                                        .onTapGesture {
+                                            endGame()
+                                        }
+                                    ZStack {
+                                        Circle()
+                                            .trim(from: 0, to: 1)
+                                            .fill(.shadow(.inner(radius: 5)))
+                                            .foregroundColor(Color.background)
+                                            .frame(width: 200, height: 200)
+                                        Circle()
+                                            .trim(from: 0, to: CGFloat(Double(timeRemaining) / Double(30)))
+                                            .stroke(.orange, lineWidth: 25)
+                                            .frame(width: 175, height: 175)
+                                            .rotationEffect(.degrees(-90))
+                                            .animation(.linear(duration: 1))
+                                        Circle()
+                                            .trim(from: 0, to: 1)
+                                            .foregroundColor(.background)
+                                            .shadow(radius: 5, y: 2)
+                                            .frame(width: 150, height: 150)
+                                        Text("\(timeRemaining)")
+                                            .foregroundColor(.orange)
+                                            .font(GroteskBold(50))
+                                            .padding()
+                                    }
+                                    .padding()
+                                    Text("\(score)")
+                                        .font(GroteskBold(30))
+                                        .foregroundColor(.orange)
+                                        .frame(width: 60)
+                                }
+                                //                                .padding([.leading, .trailing], 20)
+                                Spacer()
+                                GeometryReader{ geometry in
+                                    ColorGrid(roundWon: $roundWon, roundLost: $roundLost, difficulty: $difficulty)
+                                        .onChange(of: roundWon) {
+                                            nextRound()
+                                        }
+                                        .onChange(of: roundLost) {
+                                            punishment()
+                                        }
+                                        .frame(width: .infinity, height: geometry.size.width)
+                                }
+                                .padding(.top, 100)
                             }
+                            .padding([.leading, .trailing, .bottom], 20)
+                        }
+                        
+                    }
+                    //                .onChange(of: blinkDetection.didBlink) {
+                    //                    if blinkDetection.didBlink {
+                    //                        generateGrid()
+                    //                    }
+                    //                }
+                } else {
+                    VStack {
+                        Image(systemName: "eye")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        Spacer()
+                        Text("High Score: \(scores.max() ?? 0)")
+                        Spacer()
+                        Button(action: startGame) {
+                            Image(systemName: "arrowshape.right")
+                                .font(.system(size: 100))
+                                .frame(width: 250, height: 125)
+                                .cornerRadius(15)
+                                .overlay{
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .stroke(style: /*@START_MENU_TOKEN@*/StrokeStyle()/*@END_MENU_TOKEN@*/)
+                                }
+                        }
                     }
                 }
+                
+                if timesUpScreen{
+                    timesUp()
+                        .onAppear{
+                            Timer.scheduledTimer(withTimeInterval: 4.5, repeats: false) { _ in
+                                resetTimer()
+                                endGame()
+                            }
+                        }
+                }
+                
             }
-            
-            Text("Score: \(score)")
-            Text("High Score: \(scores.max() ?? 0)")
-            Text("Time: \(timeRemaining)")
+            .background(Color.background)
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
     }
     
     func startGame() {
-        isGameRunning = true
-        score = 0
-        timeRemaining = 30
-        startTimer()
+        loadingScreen.toggle()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            timesUpScreen = false
+            isGameRunning = true
+            score = 0
+            timeRemaining = 30
+            startTimer()
+        }
     }
     
     func nextRound() {
@@ -80,18 +163,20 @@ struct GameView: View {
         timeRemaining -= 5
         if(timeRemaining<0){
             timeRemaining = 0
-            endGame()
+            timesUpScreen = true
         }
     }
     
     func endGame() {
-//        gridCount = 2
+        //        gridCount = 2
         isGameRunning = false
-        resetTimer()
         difficulty = 0
         
         scores.append(score)
         UserDefaults.standard.set(scores, forKey: "scoreMem")
+        
+        isLoadingDone.toggle()
+        loadingScreen.toggle()
     }
     
     func startTimer() {
@@ -99,7 +184,7 @@ struct GameView: View {
             if timeRemaining > 0 {
                 timeRemaining -= 1
             } else {
-                endGame()
+                timesUpScreen = true
             }
         }
     }

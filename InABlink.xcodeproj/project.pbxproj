@@ -18,6 +18,10 @@
 		5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B592BDE198300E140D3 /* MathQuiz.swift */; };
 		5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B5B2BDE458200E140D3 /* Tile.swift */; };
 		5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */; };
+		5FEA4F402BDFF87C00D03973 /* TimesUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F3F2BDFF87C00D03973 /* TimesUp.swift */; };
+		5FEA4F422BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA4F412BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf */; };
+		5FEA4F462BDFFDDE00D03973 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F452BDFFDDE00D03973 /* Fonts.swift */; };
+		5FEA4F482BE0AA0200D03973 /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F472BE0AA0100D03973 /* Particle.swift */; };
 		814933082BE0449200B5D260 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814933072BE0449200B5D260 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +38,11 @@
 		5F616B592BDE198300E140D3 /* MathQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuiz.swift; sourceTree = "<group>"; };
 		5F616B5B2BDE458200E140D3 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircle.swift; sourceTree = "<group>"; };
+		5FEA4F3F2BDFF87C00D03973 /* TimesUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesUp.swift; sourceTree = "<group>"; };
+		5FEA4F412BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-Bold.ttf"; sourceTree = "<group>"; };
+		5FEA4F442BDFFD2300D03973 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5FEA4F452BDFFDDE00D03973 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		5FEA4F472BE0AA0100D03973 /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		814933072BE0449200B5D260 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +76,8 @@
 		5F351FCF2BDA691C002C5FB3 /* InABlink */ = {
 			isa = PBXGroup;
 			children = (
+				5FEA4F442BDFFD2300D03973 /* Info.plist */,
+				5FEA4F432BDFFCC200D03973 /* Fonts */,
 				5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */,
 				5F351FF42BDB88F8002C5FB3 /* Components */,
 				5F351FF32BDB88EB002C5FB3 /* Views */,
@@ -119,8 +130,19 @@
 				5F616B592BDE198300E140D3 /* MathQuiz.swift */,
 				5F616B5B2BDE458200E140D3 /* Tile.swift */,
 				5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */,
+				5FEA4F3F2BDFF87C00D03973 /* TimesUp.swift */,
+				5FEA4F472BE0AA0100D03973 /* Particle.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		5FEA4F432BDFFCC200D03973 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				5FEA4F412BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf */,
+				5FEA4F452BDFFDDE00D03973 /* Fonts.swift */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FEA4F422BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf in Resources */,
 				5F351FD82BDA691D002C5FB3 /* Preview Assets.xcassets in Resources */,
 				5F351FD52BDA691D002C5FB3 /* Assets.xcassets in Resources */,
 			);
@@ -195,6 +218,7 @@
 			files = (
 				814933082BE0449200B5D260 /* SplashScreen.swift in Sources */,
 				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
+				5FEA4F482BE0AA0200D03973 /* Particle.swift in Sources */,
 				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
 				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
 				5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */,
@@ -202,7 +226,9 @@
 				5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */,
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
 				5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */,
+				5FEA4F462BDFFDDE00D03973 /* Fonts.swift in Sources */,
 				5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */,
+				5FEA4F402BDFF87C00D03973 /* TimesUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,9 +362,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"InABlink/Preview Content\"";
-				DEVELOPMENT_TEAM = XZYAP8RMAS;
+				DEVELOPMENT_TEAM = RHGD2V8746;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InABlink/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -366,9 +393,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"InABlink/Preview Content\"";
-				DEVELOPMENT_TEAM = XZYAP8RMAS;
+				DEVELOPMENT_TEAM = RHGD2V8746;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = InABlink/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
