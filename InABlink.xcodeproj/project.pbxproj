@@ -18,6 +18,7 @@
 		5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B592BDE198300E140D3 /* MathQuiz.swift */; };
 		5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B5B2BDE458200E140D3 /* Tile.swift */; };
 		5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */; };
+		814933082BE0449200B5D260 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814933072BE0449200B5D260 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		5F616B592BDE198300E140D3 /* MathQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuiz.swift; sourceTree = "<group>"; };
 		5F616B5B2BDE458200E140D3 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircle.swift; sourceTree = "<group>"; };
+		814933072BE0449200B5D260 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				5F351FD22BDA691C002C5FB3 /* LandingView.swift */,
 				5F351FF12BDB88E2002C5FB3 /* GameView.swift */,
+				814933072BE0449200B5D260 /* SplashScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				814933082BE0449200B5D260 /* SplashScreen.swift in Sources */,
 				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
 				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
 				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
@@ -332,7 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"InABlink/Preview Content\"";
-				DEVELOPMENT_TEAM = RHGD2V8746;
+				DEVELOPMENT_TEAM = XZYAP8RMAS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
@@ -362,7 +366,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"InABlink/Preview Content\"";
-				DEVELOPMENT_TEAM = RHGD2V8746;
+				DEVELOPMENT_TEAM = XZYAP8RMAS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";

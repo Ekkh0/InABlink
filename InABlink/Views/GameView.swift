@@ -33,7 +33,7 @@ struct GameView: View {
                             punishment()
                         }
                 }
-                .frame(width: 350)
+                .frame(width: 300, height: 500)
 //                .onChange(of: blinkDetection.didBlink) {
 //                    if blinkDetection.didBlink {
 //                        generateGrid()
@@ -108,4 +108,8 @@ struct GameView: View {
         timer?.invalidate()
         timer = nil
     }
+}
+
+#Preview{
+    GameView()
 }
