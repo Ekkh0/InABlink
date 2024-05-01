@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AnswerTile: View {
+struct AnswerTile1: View {
     @Binding var tile: Tile
     
     @ViewBuilder
