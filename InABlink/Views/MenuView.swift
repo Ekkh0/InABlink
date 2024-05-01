@@ -26,8 +26,9 @@ extension Color {
 
 struct MenuView: View {
     @State var rotation: CGFloat = 0.0
-    @State var toggleMode: Bool = false
-    @State var highScore: Int = 0
+    @Binding var toggleMode: Bool
+    @State var mathHighScore: Int = 0
+    @State var colorHighScore: Int = 0
     @Binding var startGameToggle: Bool
     @Binding var tapped: Bool
     let generator = UIImpactFeedbackGenerator(style: .light)
@@ -58,7 +59,14 @@ struct MenuView: View {
                             VStack{
                                 Image("math game")
                                     .onTapGesture {
-                                        playButtonClickSound()
+                                        if !tapped{
+                                            playButtonClickSound()
+                                            tapped = true
+                                            startGameToggle.toggle()
+                                            toggleMode = false
+                                            generator.prepare()
+                                            generator.impactOccurred()
+                                        }
                                     }
                                     .padding(5)
                                 
@@ -67,7 +75,7 @@ struct MenuView: View {
                                         .font(GroteskBold(30))
                                         .foregroundColor(Color(hex: 0xFFE03C))
                                     
-                                    Text("81")
+                                    Text("\(mathHighScore)")
                                         .font(GroteskBold(30))
                                         .foregroundColor(Color(hex: 0xFFFAF1))
                                 }
@@ -120,7 +128,7 @@ struct MenuView: View {
                                         .font(GroteskBold(30))
                                         .foregroundColor(Color(hex: 0xFFE03C))
                                     
-                                    Text("\(highScore)")
+                                    Text("\(colorHighScore)")
                                         .font(GroteskBold(30))
                                         .foregroundColor(Color(hex: 0xFFFAF1))
                                 }
@@ -187,6 +195,9 @@ struct MenuView: View {
                     generator.prepare()
                     generator.impactOccurred()
                     if toggleMode && !tapped{
+                        tapped = true
+                        startGameToggle.toggle()
+                    }else if !toggleMode && !tapped{
                         tapped = true
                         startGameToggle.toggle()
                     }

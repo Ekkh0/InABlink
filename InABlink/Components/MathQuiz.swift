@@ -7,39 +7,38 @@
 
 import SwiftUI
 
-struct MathQuiz: View {
-    var equation: String = ""
-    @State var difficulty: Int = 0
-    @State var answers: [Int] = []
-    @State var numbersMem: [Int] = []
-    @State var operators: [Int] = []
-    @State var numElement: Int = 0
-    @State var tiles: [Tile] = []
+class MathQuiz: ObservableObject {
+    @Published var equation: String = ""
+    var difficulty: Int
+    @Published var answers: [Int] = []
+    var numbersMem: [Int] = []
+    var operators: [Int] = []
+    var numElement: Int = 0
     
-//    func findFactors(of number: Int) -> [Int] {
-//        guard number > 0 else { return [] } // Ensure the number is positive
-//        
-//        var factors: [Int] = []
-//        
-//        // Iterate from 1 to the square root of the number
-//        for i in 1...Int(Double(number).squareRoot()) {
-//            if number % i == 0 {
-//                factors.append(i) // Add the factor
-//                if i != number / i { // Ensure we don't add duplicate factors for perfect squares
-//                    factors.append(number / i) // Add the corresponding factor
-//                }
-//            }
-//        }
-//        
-//        factors.sort() // Sort the factors in ascending order
-//        
-//        return factors
-//    }
+    func findFactors(of number: Int) -> [Int] {
+        guard number > 0 else { return [] } // Ensure the number is positive
+        
+        var factors: [Int] = []
+        
+        // Iterate from 1 to the square root of the number
+        for i in 1...Int(Double(number).squareRoot()) {
+            if number % i == 0 {
+                factors.append(i) // Add the factor
+                if i != number / i { // Ensure we don't add duplicate factors for perfect squares
+                    factors.append(number / i) // Add the corresponding factor
+                }
+            }
+        }
+        
+        factors.sort() // Sort the factors in ascending order
+        
+        return factors
+    }
     
     func generateMathQuiz(){
         //how many number in the math quiz -> below 2 = 2-4
         let numElementTemp = Int.random(in:
-                                            (2+((difficulty>2 ? difficulty-2 : 0)>2 ? difficulty : 2))
+                                        (2+((difficulty>2 ? difficulty-2 : 0)>2 ? difficulty : 2))
                                         ...
                                         (difficulty>2 ? 2+difficulty : 4))
         operators = []
@@ -104,48 +103,36 @@ struct MathQuiz: View {
         print(numbers)
         
         answers.append(numbers[0])
-                tiles.append(Tile(locationPiece: CGPoint(x: Int(arc4random()%1000), y: Int(arc4random()%1000)), index: 0, number: answers[0]))
         
-        for i in 0..<3+difficulty{
+        for _ in 0..<3+difficulty{
             answers.append(Int.random(in: -abs(numbers[0])...abs(numbers[0]*2)))
-                        tiles.append(Tile(locationPiece: CGPoint(x: Int(arc4random()%1000), y: Int(arc4random()%1000)), index: i+1, number: answers[i]))
         }
         
-        print("X")
-        print(tiles.count)
+        for i in 0..<numElement-1{
+            equation.append(String(numbersMem[i]))
+            switch operators[i]{
+            case 0:
+                equation.append(" + ")
+            case 1:
+                equation.append(" - ")
+            case 2:
+                equation.append(" * ")
+            case 3:
+                equation.append(" / ")
+            default:
+                break
+            }
+        }
+        
+        equation.append(String(numbersMem.last!))
+        equation.append(" = ___")
+        
+        print(equation)
         
         return
     }
     
-//    init(){
-//        generateMathQuiz()
-//    }
-    
-    var body: some View {
-        VStack{
-            Text("Hello World!")
-//            ZStack{
-//                ForEach (0..<2, id: \.self){i in
-//                    AnswerTile(tile: $tiles[i])
-//                }
-//            }
-        }
-//        onAppear(){
-//            generateMathQuiz()
-//        }
-    }
-}
-
-class Tile{
-    var id = UUID()
-    var locationPiece: CGPoint
-    var index: Int
-    var number: Int
-    
-    init(id: UUID = UUID(), locationPiece: CGPoint, index: Int, number: Int) {
-        self.id = id
-        self.locationPiece = locationPiece
-        self.index = index
-        self.number = number
+    init(difficulty: Int){
+        self.difficulty = difficulty
     }
 }

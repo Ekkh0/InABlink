@@ -16,7 +16,8 @@ struct GameView: View {
     @State private var timeTotal = 60
     @State private var timer: Timer?
     @State var difficulty : Int = 0
-    @State var scores: [Int] = UserDefaults.standard.array(forKey: "scoreMem") as? [Int] ?? []
+    @State var colorScores: [Int] = UserDefaults.standard.array(forKey: "colorScoreMem") as? [Int] ?? []
+    @State var mathScores: [Int] = UserDefaults.standard.array(forKey: "mathScoreMem") as? [Int] ?? []
     @State private var isCounting = true
     @State var isLoadingDone: Bool = false
     @State var loadingScreen: Bool = false
@@ -25,6 +26,7 @@ struct GameView: View {
     @State var tapped: Bool = false
     @State var isRevealSpalshScreenDone: Bool = false
     @StateObject var soundManager = SoundManager()
+    @State var toggleMode: Bool = false
     
     var body: some View {
         VStack {
@@ -59,19 +61,28 @@ struct GameView: View {
                     ZStack{
                         if isLoadingDone{
                             VStack(alignment: .center){
-                                HStack(alignment: .top){
-                                    Image(systemName: "chevron.left")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 60, height: 30)
-                                        .foregroundColor(.orange)
-                                        .shadow(radius: 2, y: 2)
-                                        .onTapGesture {
-                                            soundManager.stopPlayback()
-                                            resetTimer()
-                                            endGame()
-                                        }
+                                ZStack(alignment: .top){
+                                    HStack(alignment: .center){
+                                        Image(systemName: "chevron.left")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 60, height: 30)
+                                            .foregroundColor(.orange)
+                                            .shadow(radius: 2, y: 2)
+                                            .onTapGesture {
+                                                soundManager.stopPlayback()
+                                                resetTimer()
+                                                endGame()
+                                            }
+                                    }
+                                    .frame(height: 30)
+                                    .offset(x: -175, y: 15)
+                                        
                                     ZStack {
+                                        Circle()
+                                            .trim(from: 0, to: 1)
+                                            .foregroundColor(.background)
+                                            .frame(width: 230, height: 230)
                                         Circle()
                                             .trim(from: 0, to: 1)
                                             .fill(.shadow(.inner(radius: 5)))
@@ -88,43 +99,57 @@ struct GameView: View {
                                             .foregroundColor(.background)
                                             .shadow(radius: 5, y: 2)
                                             .frame(width: 150, height: 150)
-                                        Text("\(timeRemaining)")
-                                            .foregroundColor(.orange)
-                                            .font(GroteskBold(50))
-                                            .padding()
+                                        VStack(alignment: .center, spacing: 0){
+                                            Text("\(timeRemaining)")
+                                                .foregroundColor(.orange)
+                                                .font(GroteskBold(40))
+                                                .padding(0)
+                                            HStack(alignment: .center, spacing: 0){
+                                                Image(systemName: "checkmark.circle.fill")
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .foregroundColor(Color(hex: 0xFFE03C))
+                                                    .frame(height: 25)
+                                                    .shadow(radius: 1, y: 2)
+                                                    .padding(.trailing, 3)
+                                                Text("\(score)")
+                                                    .font(GroteskBold(25))
+                                                    .foregroundColor(.orange)
+                                                    .frame(height: 40)
+                                            }
+                                            .frame(width: 100, height: 30)
+//                                            .offset(x: 130, y:15)
+                                        }
                                     }
                                     .padding()
-                                    Rectangle()
-                                        .fill(Color.clear)
-                                        .frame(width: 60, height: 60)
                                 }
+                                .zIndex(1)
                                 //                                .padding([.leading, .trailing], 20)
-                                Spacer()
-                                HStack(alignment: .center){
-                                    Image(systemName: "checkmark.circle.fill")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .foregroundColor(Color(hex: 0xFFE03C))
-                                        .frame(height: 40)
-                                        .shadow(radius: 1, y: 2)
-                                    Text("\(score)")
-                                        .font(GroteskBold(30))
-                                        .foregroundColor(.orange)
-                                        .frame(height: 40)
+                                if !toggleMode{
+                                    GeometryReader{ geometry in
+                                        MathPuzzle(roundWon: $roundWon, roundLost: $roundLost, difficulty: $difficulty)
+                                            .onChange(of: roundWon) {
+                                                nextRound()
+                                            }
+                                            .onChange(of: roundLost) {
+                                                punishment()
+                                            }
+                                            .frame(width: .infinity, height: geometry.size.width)
+                                    }
+                                    .offset(y: -125)
+                                    .zIndex(0.2)
+                                }else{
+                                    GeometryReader{ geometry in
+                                        ColorGrid(roundWon: $roundWon, roundLost: $roundLost, difficulty: $difficulty)
+                                            .onChange(of: roundWon) {
+                                                nextRound()
+                                            }
+                                            .onChange(of: roundLost) {
+                                                punishment()
+                                            }
+                                            .frame(width: .infinity, height: geometry.size.width)
+                                    }
                                 }
-                                .frame(height: 75)
-                                Spacer()
-                                GeometryReader{ geometry in
-                                    ColorGrid(roundWon: $roundWon, roundLost: $roundLost, difficulty: $difficulty)
-                                        .onChange(of: roundWon) {
-                                            nextRound()
-                                        }
-                                        .onChange(of: roundLost) {
-                                            punishment()
-                                        }
-                                        .frame(width: .infinity, height: geometry.size.width)
-                                }
-//                                .padding(.bottom, 20)
                             }
                             .padding([.leading, .trailing, .bottom], 20)
                         }
@@ -137,7 +162,7 @@ struct GameView: View {
                     //                }
                 } else {
                     VStack {
-                        MenuView(highScore: scores.max() ?? 0, startGameToggle: $startGameToggle, tapped: $tapped)
+                        MenuView(toggleMode: $toggleMode, mathHighScore: mathScores.max() ?? 0, colorHighScore: colorScores.max() ?? 0, startGameToggle: $startGameToggle, tapped: $tapped)
                             .onChange(of: startGameToggle) {
                                 if startGameToggle{
                                     tapped.toggle()
@@ -173,13 +198,23 @@ struct GameView: View {
             timesUpScreen = false
             isGameRunning = true
             score = 0
-            timeRemaining = 60
+            if !toggleMode{
+                timeRemaining = 300
+                timeTotal = 300
+            }else{
+                timeRemaining = 60
+                timeTotal = 60
+            }
             startTimer()
         }
     }
     
     func nextRound() {
-        score += timeTotal - timeRemaining // Score based on remaining time
+        if !toggleMode{
+            score += 1
+        }else{
+            score += timeTotal - timeRemaining // Score based on remaining time
+        }
     }
     
     func punishment(){
@@ -198,8 +233,13 @@ struct GameView: View {
         startGameToggle = false
         print(tapped)
         
-        scores.append(score)
-        UserDefaults.standard.set(scores, forKey: "scoreMem")
+        if !toggleMode{
+            mathScores.append(score)
+            UserDefaults.standard.set(colorScores, forKey: "mathScoreMem")
+        }else{
+            colorScores.append(score)
+            UserDefaults.standard.set(colorScores, forKey: "colorScoreMem")
+        }
         
         isLoadingDone.toggle()
         loadingScreen.toggle()
