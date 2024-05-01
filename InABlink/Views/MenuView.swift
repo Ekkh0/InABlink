@@ -30,6 +30,8 @@ struct MenuView: View {
     @State var highScore: Int = 0
     @Binding var startGameToggle: Bool
     @Binding var tapped: Bool
+    let generator = UIImpactFeedbackGenerator(style: .light)
+    @StateObject var soundManager = SoundManager()
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -39,11 +41,8 @@ struct MenuView: View {
                 .ignoresSafeArea()
             VStack  {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 12, style:.continuous)
-                        .frame(width:256, height:150)
-                        .foregroundColor(Color(hex: 0xEF652A))
                     VStack {
-                        ZStack {
+                        ZStack(alignment: .top){
                             
                             RoundedRectangle(cornerRadius: 12, style: .continuous)
                                 .opacity(!toggleMode ? 1: 0)
@@ -53,72 +52,93 @@ struct MenuView: View {
                                 .rotationEffect(.degrees(rotation))
                                 .mask{
                                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                        .frame(width:266, height:118)
+                                        .frame(width:270.5, height:120)
                                 }
-                            Image("math game")
-                                .onTapGesture {
+                                .zIndex(1)
+                            VStack{
+                                Image("math game")
+                                    .onTapGesture {
+                                        playButtonClickSound()
+                                    }
+                                    .padding(5)
+                                
+                                HStack(alignment: .center) {
+                                    Image(systemName: "crown.fill")
+                                        .font(GroteskBold(30))
+                                        .foregroundColor(Color(hex: 0xFFE03C))
+                                    
+                                    Text("81")
+                                        .font(GroteskBold(30))
+                                        .foregroundColor(Color(hex: 0xFFFAF1))
                                 }
+                                .offset(y: -7.5)
+                            }
+                            .zIndex(1)
+                            
+                            
+                            RoundedRectangle(cornerRadius: 12, style:.continuous)
+                                .zIndex(0.5)
+                                .frame(width:256, height:160)
+                                .foregroundColor(Color(hex: 0xEF652A))
+                                .offset(y: 5)
                         }//Zstack1
-                        
                         .offset(y:0)
                         
-                        HStack {
-                            Image(systemName: "crown.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(Color(hex: 0xFFE03C))
-                            
-                            Text("81")
-                                .font(.largeTitle)
-                                .bold()
-                                .foregroundColor(Color(hex: 0xFFFAF1))
-                                
-                        }
-                        .offset(y:-18)
                     }
                 }//Zstack2
                 ZStack {
-                    RoundedRectangle(cornerRadius: 12, style:.continuous)
-                        .frame(width:256, height:150)
-                        .foregroundColor(Color(hex: 0xEF652A))
-                    
                     VStack {
-                        ZStack  {
+                        ZStack(alignment: .top){
+                            
                             RoundedRectangle(cornerRadius: 12, style: .continuous)
                                 .opacity(toggleMode ? 1: 0)
                                 .frame(width:300, height:118)
+                            
                                 .foregroundStyle(LinearGradient(gradient: Gradient(colors: [.red,.red,.orange, .orange,.blue,.blue]), startPoint: .top, endPoint: .bottom))
                                 .rotationEffect(.degrees(rotation))
                                 .mask{
                                     RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                        .frame(width:266, height:118)
+                                        .frame(width:270.5, height:120)
                                 }
-                            
-                            Image("color puzzle")
-                                .onTapGesture {
-                                    if !tapped{
-                                        tapped=true
-                                        startGameToggle.toggle()
+                                .zIndex(1)
+                            VStack{
+                                Image("color puzzle")
+                                    .onTapGesture {
+                                        if !tapped{
+                                            playButtonClickSound()
+                                            tapped = true
+                                            startGameToggle.toggle()
+                                            toggleMode = true
+                                            generator.prepare()
+                                            generator.impactOccurred()
+                                        }
                                     }
-                                }
-                                .padding (5)
-                        }//Zstack
-                        .offset(y:0)
-                        HStack {
-                            Image(systemName: "crown.fill")
-                                .font(.largeTitle)
-                                .foregroundColor(Color(hex: 0xFFE03C))
-                            
-                            Text("\(highScore)")
-                                .font(.largeTitle)
-                                .bold()
-                                .foregroundColor(Color(hex: 0xFFFAF1))
+                                    .padding(5)
                                 
-                        }
-                        .offset(y:-15)
+                                HStack(alignment: .center) {
+                                    Image(systemName: "crown.fill")
+                                        .font(GroteskBold(30))
+                                        .foregroundColor(Color(hex: 0xFFE03C))
+                                    
+                                    Text("\(highScore)")
+                                        .font(GroteskBold(30))
+                                        .foregroundColor(Color(hex: 0xFFFAF1))
+                                }
+                                .offset(y: -7.5)
+                            }
+                            .zIndex(1)
+                            
+                            
+                            RoundedRectangle(cornerRadius: 12, style:.continuous)
+                                .zIndex(0.5)
+                                .frame(width:256, height:160)
+                                .foregroundColor(Color(hex: 0xEF652A))
+                                .offset(y: 5)
+                        }//Zstack1
+                        .offset(y:0)
                         
                     }
-                    
-                }
+                }//Zstack2
                 .offset(y: -10)
                     .onAppear{
                         withAnimation (
@@ -137,6 +157,9 @@ struct MenuView: View {
                 .contentShape(Rectangle())
                 .position(x: 112, y: 650)
                 .onTapGesture {
+                    playButtonClickSound()
+                    generator.prepare()
+                    generator.impactOccurred()
                     toggleMode.toggle()
                 }
                 
@@ -147,6 +170,9 @@ struct MenuView: View {
                 .contentShape(Rectangle())
                 .position(x: 112, y: 740)
                 .onTapGesture {
+                    playButtonClickSound()
+                    generator.prepare()
+                    generator.impactOccurred()
                     toggleMode.toggle()
                 }
             Rectangle()
@@ -157,6 +183,9 @@ struct MenuView: View {
                 .foregroundColor(Color.orange.opacity(1.0))
                 .position(x: 335, y: 645)
                 .onTapGesture {
+                    playButtonClickSound()
+                    generator.prepare()
+                    generator.impactOccurred()
                     if toggleMode && !tapped{
                         tapped = true
                         startGameToggle.toggle()
@@ -164,6 +193,21 @@ struct MenuView: View {
                 }
         }
         .padding()
-        
+    }
+    
+    func playButtonClickSound(){
+        let randNum = Int.random(in: 0...3)
+        switch randNum{
+        case 0:
+            soundManager.playSound(soundName: "Button1", type: "mp3", duration: 1)
+        case 1:
+            soundManager.playSound(soundName: "Button2", type: "mp3", duration: 1)
+        case 2:
+            soundManager.playSound(soundName: "Button3", type: "mp3", duration: 1)
+        case 3:
+            soundManager.playSound(soundName: "Button4", type: "mp3", duration: 1)
+        default:
+            break
+        }
     }
 }

@@ -17,6 +17,14 @@
 		5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */; };
 		5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B592BDE198300E140D3 /* MathQuiz.swift */; };
 		5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B5B2BDE458200E140D3 /* Tile.swift */; };
+		5F7E711D2BE224EB00FBAFE5 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E711C2BE224EB00FBAFE5 /* SoundPlayer.swift */; };
+		5F7E711F2BE229E200FBAFE5 /* Timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E711E2BE229E200FBAFE5 /* Timer.wav */; };
+		5F7E71222BE22E1E00FBAFE5 /* Alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71212BE22E1E00FBAFE5 /* Alarm.wav */; };
+		5F7E71272BE2304500FBAFE5 /* Button4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71232BE2304500FBAFE5 /* Button4.mp3 */; };
+		5F7E71282BE2304500FBAFE5 /* Button2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71242BE2304500FBAFE5 /* Button2.mp3 */; };
+		5F7E71292BE2304500FBAFE5 /* Button1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71252BE2304500FBAFE5 /* Button1.mp3 */; };
+		5F7E712A2BE2304500FBAFE5 /* Button3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71262BE2304500FBAFE5 /* Button3.mp3 */; };
+		5F7E71322BE2369400FBAFE5 /* Falling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71312BE2369400FBAFE5 /* Falling.mp3 */; };
 		5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */; };
 		5FEA4F402BDFF87C00D03973 /* TimesUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEA4F3F2BDFF87C00D03973 /* TimesUp.swift */; };
 		5FEA4F422BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5FEA4F412BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf */; };
@@ -40,6 +48,14 @@
 		5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrid.swift; sourceTree = "<group>"; };
 		5F616B592BDE198300E140D3 /* MathQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuiz.swift; sourceTree = "<group>"; };
 		5F616B5B2BDE458200E140D3 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		5F7E711C2BE224EB00FBAFE5 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		5F7E711E2BE229E200FBAFE5 /* Timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Timer.wav; path = InABlink/Sounds/Timer.wav; sourceTree = SOURCE_ROOT; };
+		5F7E71212BE22E1E00FBAFE5 /* Alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Alarm.wav; sourceTree = "<group>"; };
+		5F7E71232BE2304500FBAFE5 /* Button4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Button4.mp3; sourceTree = "<group>"; };
+		5F7E71242BE2304500FBAFE5 /* Button2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Button2.mp3; sourceTree = "<group>"; };
+		5F7E71252BE2304500FBAFE5 /* Button1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Button1.mp3; sourceTree = "<group>"; };
+		5F7E71262BE2304500FBAFE5 /* Button3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Button3.mp3; sourceTree = "<group>"; };
+		5F7E71312BE2369400FBAFE5 /* Falling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Falling.mp3; sourceTree = "<group>"; };
 		5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsingCircle.swift; sourceTree = "<group>"; };
 		5FEA4F3F2BDFF87C00D03973 /* TimesUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimesUp.swift; sourceTree = "<group>"; };
 		5FEA4F412BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SpaceGrotesk-Bold.ttf"; sourceTree = "<group>"; };
@@ -82,6 +98,7 @@
 		5F351FCF2BDA691C002C5FB3 /* InABlink */ = {
 			isa = PBXGroup;
 			children = (
+				5F7E71202BE22A1300FBAFE5 /* Sounds */,
 				5FEA4F442BDFFD2300D03973 /* Info.plist */,
 				5FEA4F432BDFFCC200D03973 /* Fonts */,
 				5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */,
@@ -141,8 +158,23 @@
 				5FEA4F472BE0AA0100D03973 /* Particle.swift */,
 				9C73FC872BE2170B001FBDD6 /* MathPuzzle.swift */,
 				9C73FC892BE217E7001FBDD6 /* AnswerTile.swift */,
+				5F7E711C2BE224EB00FBAFE5 /* SoundPlayer.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		5F7E71202BE22A1300FBAFE5 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				5F7E71252BE2304500FBAFE5 /* Button1.mp3 */,
+				5F7E71242BE2304500FBAFE5 /* Button2.mp3 */,
+				5F7E71262BE2304500FBAFE5 /* Button3.mp3 */,
+				5F7E71232BE2304500FBAFE5 /* Button4.mp3 */,
+				5F7E71212BE22E1E00FBAFE5 /* Alarm.wav */,
+				5F7E71312BE2369400FBAFE5 /* Falling.mp3 */,
+				5F7E711E2BE229E200FBAFE5 /* Timer.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		5FEA4F432BDFFCC200D03973 /* Fonts */ = {
@@ -213,8 +245,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5FEA4F422BDFFCB800D03973 /* SpaceGrotesk-Bold.ttf in Resources */,
+				5F7E712A2BE2304500FBAFE5 /* Button3.mp3 in Resources */,
+				5F7E71272BE2304500FBAFE5 /* Button4.mp3 in Resources */,
 				5F351FD82BDA691D002C5FB3 /* Preview Assets.xcassets in Resources */,
+				5F7E71222BE22E1E00FBAFE5 /* Alarm.wav in Resources */,
+				5F7E71282BE2304500FBAFE5 /* Button2.mp3 in Resources */,
+				5F7E711F2BE229E200FBAFE5 /* Timer.wav in Resources */,
+				5F7E71292BE2304500FBAFE5 /* Button1.mp3 in Resources */,
 				5F351FD52BDA691D002C5FB3 /* Assets.xcassets in Resources */,
+				5F7E71322BE2369400FBAFE5 /* Falling.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +275,7 @@
 				5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */,
 				9C73FC8A2BE217E7001FBDD6 /* AnswerTile.swift in Sources */,
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
+				5F7E711D2BE224EB00FBAFE5 /* SoundPlayer.swift in Sources */,
 				5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */,
 				9C73FC882BE2170B001FBDD6 /* MathPuzzle.swift in Sources */,
 				5FEA4F462BDFFDDE00D03973 /* Fonts.swift in Sources */,
@@ -299,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -356,7 +396,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -384,6 +424,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -415,6 +456,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

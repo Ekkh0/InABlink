@@ -55,7 +55,7 @@ struct timesUp: View {
                 }
         }
         .onAppear(){
-            Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
+            Timer.scheduledTimer(withTimeInterval: 3.75, repeats: false) { _ in
                 self.isStackVisible = false
                 self.hourGlassVisible = false
             }

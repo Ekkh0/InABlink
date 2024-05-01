@@ -24,19 +24,20 @@ struct GameView: View {
     @State var startGameToggle: Bool = false
     @State var tapped: Bool = false
     @State var isRevealSpalshScreenDone: Bool = false
+    @StateObject var soundManager = SoundManager()
     
     var body: some View {
         VStack {
             ZStack{
-                SplashScreenView()
-                    .zIndex(4)
-                    .opacity(isRevealSpalshScreenDone ? 0 : 1)
-                    .ignoresSafeArea()
-                    .onAppear{
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.7) {
-                            isRevealSpalshScreenDone.toggle()
-                        }
-                    }
+//                SplashScreenView()
+//                    .zIndex(4)
+//                    .opacity(isRevealSpalshScreenDone ? 0 : 1)
+//                    .ignoresSafeArea()
+//                    .onAppear{
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.7) {
+//                            isRevealSpalshScreenDone.toggle()
+//                        }
+//                    }
                 if loadingScreen{
                     PulsingCircle()
                         .zIndex(2)
@@ -57,7 +58,7 @@ struct GameView: View {
                 if isGameRunning {
                     ZStack{
                         if isLoadingDone{
-                            VStack {
+                            VStack(alignment: .center){
                                 HStack(alignment: .top){
                                     Image(systemName: "chevron.left")
                                         .resizable()
@@ -66,6 +67,7 @@ struct GameView: View {
                                         .foregroundColor(.orange)
                                         .shadow(radius: 2, y: 2)
                                         .onTapGesture {
+                                            soundManager.stopPlayback()
                                             resetTimer()
                                             endGame()
                                         }
@@ -92,12 +94,25 @@ struct GameView: View {
                                             .padding()
                                     }
                                     .padding()
+                                    Rectangle()
+                                        .fill(Color.clear)
+                                        .frame(width: 60, height: 60)
+                                }
+                                //                                .padding([.leading, .trailing], 20)
+                                Spacer()
+                                HStack(alignment: .center){
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .foregroundColor(Color(hex: 0xFFE03C))
+                                        .frame(height: 40)
+                                        .shadow(radius: 1, y: 2)
                                     Text("\(score)")
                                         .font(GroteskBold(30))
                                         .foregroundColor(.orange)
-                                        .frame(width: 60)
+                                        .frame(height: 40)
                                 }
-                                //                                .padding([.leading, .trailing], 20)
+                                .frame(height: 75)
                                 Spacer()
                                 GeometryReader{ geometry in
                                     ColorGrid(roundWon: $roundWon, roundLost: $roundLost, difficulty: $difficulty)
@@ -109,7 +124,7 @@ struct GameView: View {
                                         }
                                         .frame(width: .infinity, height: geometry.size.width)
                                 }
-                                .padding(.top, 100)
+//                                .padding(.bottom, 20)
                             }
                             .padding([.leading, .trailing, .bottom], 20)
                         }
@@ -129,28 +144,14 @@ struct GameView: View {
                                     startGame()
                                 }
                             }
-                        //                        Image(systemName: "eye")
-                        //                            .resizable()
-                        //                            .aspectRatio(contentMode: .fit)
-                        //                        Spacer()
-                        //                        Text("High Score: \(scores.max() ?? 0)")
-                        //                        Spacer()
-                        //                        Button(action: startGame) {
-                        //                            Image(systemName: "arrowshape.right")
-                        //                                .font(.system(size: 100))
-                        //                                .frame(width: 250, height: 125)
-                        //                                .cornerRadius(15)
-                        //                                .overlay{
-                        //                                    RoundedRectangle(cornerRadius: 15)
-                        //                                        .stroke(style: /*@START_MENU_TOKEN@*/StrokeStyle()/*@END_MENU_TOKEN@*/)
-                        //                                }
-                        //                        }
                     }
                 }
                 
                 if timesUpScreen{
                     timesUp()
                         .onAppear{
+                            soundManager.stopPlayback()
+                            soundManager.playSound(soundName: "Alarm", type: "wav", duration: 5)
                             Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
                                 resetTimer()
                                 endGame()
@@ -166,6 +167,7 @@ struct GameView: View {
     
     func startGame() {
         loadingScreen.toggle()
+        soundManager.playSound(soundName: "Falling", type: "mp3", duration: 4)
         
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
             timesUpScreen = false
@@ -177,7 +179,7 @@ struct GameView: View {
     }
     
     func nextRound() {
-        score += timeRemaining // Score based on remaining time
+        score += timeTotal - timeRemaining // Score based on remaining time
     }
     
     func punishment(){
@@ -204,10 +206,17 @@ struct GameView: View {
     }
     
     func startTimer() {
+        var togglePlayed = false
+        
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            if timeRemaining > 0 {
+            if timeRemaining <= 15 && !togglePlayed{
                 timeRemaining -= 1
-            } else {
+                togglePlayed = true
+                soundManager.playSound(soundName: "Timer", type: "wav", duration: 15)
+                print("Terjalan timer!")
+            }else if timeRemaining > 0{
+                timeRemaining -= 1
+            }else {
                 timesUpScreen = true
             }
         }
