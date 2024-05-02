@@ -66,6 +66,7 @@ struct LeaderBoard: View {
                             .frame(width:116, height:635)
                             .cornerRadius(10)
                             .foregroundColor(Color(hex: 0x3968AF))
+                            .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 5)
                         .offset(x:10,y:40)
                         
                         
@@ -105,6 +106,7 @@ struct LeaderBoard: View {
                             .frame(width:140, height:680)
                             .cornerRadius(10)
                         .foregroundColor(Color(hex: 0xEF652A))
+                        .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 5)
                         
                         //1st BEST SOCRE
                         VStack {
@@ -140,6 +142,7 @@ struct LeaderBoard: View {
                             .cornerRadius(10)
                             .foregroundColor(Color(hex: 0xF9B532))
                         .offset(x:-8,y: 90)
+                        .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 5)
                         
                         //3RD BEST SOCRE
                         VStack {
@@ -179,6 +182,7 @@ struct LeaderBoard: View {
                         .frame(width:256,height:114)
                         .cornerRadius(18)
                     .foregroundColor(Color(hex: 0xFFFAF1))
+                    .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 5)
                     
                     //SCORE
                     HStack {
