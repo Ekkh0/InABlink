@@ -19,7 +19,7 @@ struct MathPuzzle: View {
     //    @StateObject public var mathQuiz = MathQuiz(difficulty: 0)
     @State var winOrLose : Bool = false
     @State var equation: String = ""
-    @State var answers: [Int] = []
+//    @State var answers: [Int] = []
     @State var numbersMem: [Int] = []
     @State var operators: [Int] = []
     @State var numElement: Int = 0
@@ -99,6 +99,8 @@ struct MathPuzzle: View {
         let correctNumberIndex = Int.random(in: 0..<gridCount * gridCount)
         print("Terjalan!")
         
+        var randNum = 0
+        
         for row in 0..<gridCount {
             var rowCircles: [CircleDataMath] = []
             for column in 0..<gridCount {
@@ -106,7 +108,19 @@ struct MathPuzzle: View {
                     // Set one circle with a different color
                     rowCircles.append(CircleDataMath(color: colors[Int.random(in: 0...10)], num: answerCorrect))
                 } else {
-                    rowCircles.append(CircleDataMath(color: colors[Int.random(in: 0...10)], num: answers.randomElement() ?? 0))
+                    if answerCorrect != 0 && answerCorrect > 0{
+                        repeat{
+                            randNum = Int.random(in: -abs(answerCorrect)...abs(answerCorrect*2))
+                        }while randNum==answerCorrect
+                    }else if answerCorrect != 0 && answerCorrect < 0{
+                        repeat{
+                            randNum = Int.random(in: -abs(answerCorrect*2)...abs(answerCorrect))
+                        }while randNum==answerCorrect
+                    }else{
+                        randNum = 1
+                    }
+                    
+                    rowCircles.append(CircleDataMath(color: colors[Int.random(in: 0...10)], num: randNum))
                 }
             }
             circles.append(rowCircles)
@@ -138,7 +152,7 @@ struct MathPuzzle: View {
     func generateMathQuiz(){
         //how many number in the math quiz -> below 2 = 2-4
         equation = ""
-        answers = []
+//        answers = []
         var minNumber = difficulty/3 > 2 ? difficulty/3-2 : 0
         
         if minNumber > 2{
@@ -226,15 +240,15 @@ struct MathPuzzle: View {
         
         answerCorrect = numbers[0]
         
-        for _ in 0..<gridCount*gridCount{
-            var randNum = 0
-            
-            repeat{
-                randNum = Int.random(in: -abs(numbers[0])...abs(numbers[0]*2))
-            }while randNum==answerCorrect
-            
-            answers.append(randNum)
-        }
+//        for _ in 0..<gridCount*gridCount{
+//            var randNum = 0
+//            
+//            repeat{
+//                randNum = Int.random(in: -abs(numbers[0])...abs(numbers[0]*2))
+//            }while randNum==answerCorrect
+//            
+//            answers.append(randNum)
+//        }
         
         for i in 0..<numElement-1{
             equation.append(String(numbersMem[i]))

@@ -21,7 +21,7 @@ struct Pentagon: Shape {
         let angle = CGFloat.pi * 2 / 5
 
         // Start drawing the pentagon from the top corner
-        var startAngle = -CGFloat.pi / 2
+        let startAngle = -CGFloat.pi / 2
 
         // Move to the starting point of the pentagon
         path.move(to: CGPoint(x: center.x + radius * cos(startAngle), y: center.y + radius * sin(startAngle)))
@@ -42,39 +42,71 @@ struct Pentagon: Shape {
 
 struct LeaderBoard: View {
     @State private var rotation: Double = 0
+    @Binding var scores: [Int]
+    @Binding var score: Int
+    var highScores: [Int]?{
+        return scores.sorted(by: >)
+    }
+    @Binding var leaderboard: Bool
+    
     var body: some View {
-        VStack{
+        VStack(alignment: .center){
             //CHEVRON BACK
-            HStack {
+            HStack(){
                 Image(systemName: "chevron.backward")
                     .foregroundColor(.orange)
                     .font(.largeTitle)
                 .fontWeight(.bold)
-            
+                .onTapGesture {
+                    leaderboard.toggle()
+                }
                 Spacer()
             }
+            .padding(.top, 100)
+            .padding(.leading, 20)
             
-            Spacer()
-            
-            
-            
-            //SCORE LADDER
             ZStack {
+                Rectangle()
+                    .frame(width:256,height:114)
+                    .cornerRadius(18)
+                .foregroundColor(Color(hex: 0xFFFAF1))
+                .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 5)
+                
+                //SCORE
                 HStack {
+                    Text("\(score)")
+                        .foregroundColor(Color(hex:0xEF652A))
+                        .font(GroteskBold(54))
+                        .fontWeight(.bold)
+                        .padding(.trailing, 10)
+
+                    Image("refresh arrow")
+                }
+            }
+            .zIndex(3)
+            .frame(width: 400)
+            .offset(y:500)
+            .onTapGesture {
+                leaderboard.toggle()
+            }
+            
+//            SCORE LADDER
+            ZStack {
+                HStack(alignment: .top, spacing: 0){
                     ZStack {
                         Rectangle()
                             .frame(width:116, height:635)
                             .cornerRadius(10)
                             .foregroundColor(Color(hex: 0x3968AF))
                             .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 5)
-                        .offset(x:10,y:40)
+                        .offset(x:10,y:45)
                         
                         
                         //2ND BEST SOCRE
-                        VStack {
-                            Text("1910")
+                        VStack(alignment: .center) {
+                            Text("\(highScores?[1] ?? 0)")
                                 .foregroundColor(Color(hex:0xFFFAF1))
-                                .font(.system(size: 36))
+                                .font(GroteskBold(36))
                                 .fontWeight(.bold)
                             
                             Pentagon()
@@ -89,14 +121,14 @@ struct LeaderBoard: View {
                                 .overlay{
                                     Text("2")
                                         .foregroundColor(Color(hex:0xFFFAF1))
-                                        .font(.system(size: 54))
+                                        .font(GroteskBold(54))
                                         .fontWeight(.bold)
                             }
                                 
                         }
-                        .position(x:70,y:200)
-                        
+                        .position(x:70,y:170)
                     }
+                    .zIndex(2)
                         
                         
                     
@@ -109,8 +141,8 @@ struct LeaderBoard: View {
                         .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 5)
                         
                         //1st BEST SOCRE
-                        VStack {
-                            Text("1919")
+                        VStack(alignment: .center) {
+                            Text("\(highScores?[0] ?? 0)")
                                 .foregroundColor(Color(hex:0xFFFAF1))
                                 .font(.system(size: 36))
                                 .fontWeight(.bold)
@@ -127,28 +159,28 @@ struct LeaderBoard: View {
                                 .overlay{
                                     Text("1")
                                         .foregroundColor(Color(hex:0xFFFAF1))
-                                        .font(.system(size: 54))
+                                        .font(GroteskBold(54))
                                         .fontWeight(.bold)
                             }
                                 
                         }
                         .position(x:70,y:130)
                     }
-                    
+                    .zIndex(3)
                     
                     ZStack {
                         Rectangle()
                             .frame(width:116, height:590)
                             .cornerRadius(10)
                             .foregroundColor(Color(hex: 0xF9B532))
-                        .offset(x:-8,y: 90)
+                        .offset(x:-10,y: 90)
                         .shadow(color: Color.black.opacity(0.3), radius: 6, x: 0, y: 5)
                         
                         //3RD BEST SOCRE
-                        VStack {
-                            Text("1907")
+                        VStack(alignment: .center) {
+                            Text("\(highScores?[2] ?? 0)")
                                 .foregroundColor(Color(hex:0xFFFAF1))
-                                .font(.system(size: 36))
+                                .font(GroteskBold(36))
                                 .fontWeight(.bold)
                             
                             Pentagon()
@@ -163,49 +195,24 @@ struct LeaderBoard: View {
                                 .overlay{
                                     Text("3")
                                         .foregroundColor(Color(hex:0xFFFAF1))
-                                        .font(.system(size: 54))
+                                        .font(GroteskBold(54))
                                         .fontWeight(.bold)
                             }
                                 
                         }
-                        .position(x:50,y:250)
+                        .position(x:55,y:210)
                     }
+                    .zIndex(1)
                 }
-                .offset(y:60)
-                
-               
-                
+                .offset(y:-60)
                 
                 //SCORE TERKINI
-                ZStack {
-                    Rectangle()
-                        .frame(width:256,height:114)
-                        .cornerRadius(18)
-                    .foregroundColor(Color(hex: 0xFFFAF1))
-                    .shadow(color: Color.black.opacity(0.5), radius: 10, x: 0, y: 5)
-                    
-                    //SCORE
-                    HStack {
-                        Text("1906")
-                            .foregroundColor(Color(hex:0xEF652A))
-                            .font(.system(size: 54))
-                            .fontWeight(.bold)
-                        
-                        
-                        Image("refresh arrow")
-                    }
-                }
-                .position(x:190,y:500)
-                    
             }
-            
+            .zIndex(1)
         }
-        .padding(.horizontal)
+        .frame(width: UIScreen.main.bounds.size.width)
+        .frame(height: UIScreen.main.bounds.size.height)
+        .background(Color.background)
     }
         
-}
-
-
-#Preview {
-    LeaderBoard()
 }

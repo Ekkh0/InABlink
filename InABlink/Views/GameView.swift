@@ -27,22 +27,23 @@ struct GameView: View {
     @State var isRevealSpalshScreenDone: Bool = false
     @StateObject var soundManager = SoundManager()
     @State var toggleMode: Bool = false
+    @State var leaderboard: Bool = false
     
     var body: some View {
-        VStack {
+//        VStack {
             ZStack{
-//                SplashScreenView()
-//                    .zIndex(4)
-//                    .opacity(isRevealSpalshScreenDone ? 0 : 1)
-//                    .ignoresSafeArea()
-//                    .onAppear{
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.7) {
-//                            isRevealSpalshScreenDone.toggle()
-//                        }
-//                    }
+                SplashScreenView()
+                    .zIndex(4)
+                    .opacity(isRevealSpalshScreenDone ? 0 : 1)
+                    .ignoresSafeArea()
+                    .onAppear{
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 4.7) {
+                            isRevealSpalshScreenDone.toggle()
+                        }
+                    }
                 if loadingScreen{
                     PulsingCircle()
-                        .zIndex(2)
+                        .zIndex(3)
                         .onAppear{
                             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
                                 withAnimation {
@@ -77,7 +78,7 @@ struct GameView: View {
                                     }
                                     .frame(height: 30)
                                     .offset(x: -175, y: 15)
-                                        
+                                    
                                     ZStack {
                                         Circle()
                                             .trim(from: 0, to: 1)
@@ -118,7 +119,7 @@ struct GameView: View {
                                                     .frame(height: 40)
                                             }
                                             .frame(width: 100, height: 30)
-//                                            .offset(x: 130, y:15)
+                                            //                                            .offset(x: 130, y:15)
                                         }
                                     }
                                     .padding()
@@ -178,17 +179,29 @@ struct GameView: View {
                             soundManager.stopPlayback()
                             soundManager.playSound(soundName: "Alarm", type: "wav", duration: 5)
                             Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { _ in
+                                leaderboard = true
                                 resetTimer()
                                 endGame()
                             }
                         }
+                        .zIndex(3)
+                }
+                
+                if leaderboard && !toggleMode{
+                    LeaderBoard(scores: $mathScores, score: $score, leaderboard: $leaderboard)
+//                        .ignoresSafeArea()
+                        .zIndex(2)
+                }else if leaderboard && toggleMode{
+                    LeaderBoard(scores: $colorScores, score: $score, leaderboard: $leaderboard)
+//                        .ignoresSafeArea()
+                        .zIndex(2)
                 }
                 
             }
             .background(Color.background)
             .navigationBarBackButtonHidden(true)
         }
-    }
+//    }
     
     func startGame() {
         loadingScreen.toggle()
@@ -235,7 +248,7 @@ struct GameView: View {
         
         if !toggleMode{
             mathScores.append(score)
-            UserDefaults.standard.set(colorScores, forKey: "mathScoreMem")
+            UserDefaults.standard.set(mathScores, forKey: "mathScoreMem")
         }else{
             colorScores.append(score)
             UserDefaults.standard.set(colorScores, forKey: "colorScoreMem")
