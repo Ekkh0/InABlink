@@ -34,6 +34,7 @@
 		814933082BE0449200B5D260 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814933072BE0449200B5D260 /* SplashScreen.swift */; };
 		9C73FC882BE2170B001FBDD6 /* MathPuzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73FC872BE2170B001FBDD6 /* MathPuzzle.swift */; };
 		9C73FC8A2BE217E7001FBDD6 /* AnswerTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73FC892BE217E7001FBDD6 /* AnswerTile.swift */; };
+		9C73FC922BE31AAB001FBDD6 /* LeaderBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C73FC912BE31AAB001FBDD6 /* LeaderBoard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		814933072BE0449200B5D260 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		9C73FC872BE2170B001FBDD6 /* MathPuzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathPuzzle.swift; sourceTree = "<group>"; };
 		9C73FC892BE217E7001FBDD6 /* AnswerTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTile.swift; sourceTree = "<group>"; };
+		9C73FC912BE31AAB001FBDD6 /* LeaderBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				9C73FC872BE2170B001FBDD6 /* MathPuzzle.swift */,
 				9C73FC892BE217E7001FBDD6 /* AnswerTile.swift */,
 				5F7E711C2BE224EB00FBAFE5 /* SoundPlayer.swift */,
+				9C73FC912BE31AAB001FBDD6 /* LeaderBoard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */,
 				5F7E711D2BE224EB00FBAFE5 /* SoundPlayer.swift in Sources */,
 				5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */,
+				9C73FC922BE31AAB001FBDD6 /* LeaderBoard.swift in Sources */,
 				9C73FC882BE2170B001FBDD6 /* MathPuzzle.swift in Sources */,
 				5FEA4F462BDFFDDE00D03973 /* Fonts.swift in Sources */,
 				5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */,
