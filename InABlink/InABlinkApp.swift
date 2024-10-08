@@ -11,7 +11,6 @@ import SwiftUI
 struct InABlinkApp: App {
     var body: some Scene {
         WindowGroup {
-//            MathQuiz()
             GameView()
         }
     }

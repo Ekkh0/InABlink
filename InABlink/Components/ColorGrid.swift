@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ColorGrid: View {
-    @StateObject public var blinkDetection = FaceDetectionViewController()
+    @StateObject public var blinkDetection = BlinkDetection()
+    @State private var arSessionManager: ARSessionManager?
     @State private var circles: [[CircleData]] = []
     @State private var correctCircleRow = 0
     @State private var correctCircleColumn = 0
@@ -64,7 +65,14 @@ struct ColorGrid: View {
                     }
                 }
             }
-//            EffectView(correct: $winOrLose)
+            //            EffectView(correct: $winOrLose)
+        }
+        .onAppear {
+            arSessionManager = ARSessionManager(blinkDetection: blinkDetection)
+        }
+        .onDisappear {
+            // Pause the AR session when the view disappears
+            arSessionManager?.pause()
         }
     }
     
@@ -80,8 +88,7 @@ struct ColorGrid: View {
         let color = colors[randInt]
         colors.remove(at: randInt)
         let color2 = colors.randomElement()!
-        print("Terjalan!")
-        
+    
         for row in 0..<gridCount {
             var rowCircles: [CircleData] = []
             for column in 0..<gridCount {

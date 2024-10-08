@@ -244,7 +244,6 @@ struct GameView: View {
         difficulty = 0
         tapped = false
         startGameToggle = false
-        print(tapped)
         
         if !toggleMode{
             mathScores.append(score)
@@ -266,7 +265,6 @@ struct GameView: View {
                 timeRemaining -= 1
                 togglePlayed = true
                 soundManager.playSound(soundName: "Timer", type: "wav", duration: 15)
-                print("Terjalan timer!")
             }else if timeRemaining > 0{
                 timeRemaining -= 1
             }else {

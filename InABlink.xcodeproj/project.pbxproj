@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */; };
-		5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FD22BDA691C002C5FB3 /* LandingView.swift */; };
 		5F351FD52BDA691D002C5FB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F351FD42BDA691D002C5FB3 /* Assets.xcassets */; };
 		5F351FD82BDA691D002C5FB3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F351FD72BDA691D002C5FB3 /* Preview Assets.xcassets */; };
 		5F351FE82BDA9DC6002C5FB3 /* CGExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */; };
@@ -16,7 +15,6 @@
 		5F351FF22BDB88E2002C5FB3 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F351FF12BDB88E2002C5FB3 /* GameView.swift */; };
 		5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */; };
 		5F616B5A2BDE198300E140D3 /* MathQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B592BDE198300E140D3 /* MathQuiz.swift */; };
-		5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F616B5B2BDE458200E140D3 /* Tile.swift */; };
 		5F7E711D2BE224EB00FBAFE5 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7E711C2BE224EB00FBAFE5 /* SoundPlayer.swift */; };
 		5F7E711F2BE229E200FBAFE5 /* Timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E711E2BE229E200FBAFE5 /* Timer.wav */; };
 		5F7E71222BE22E1E00FBAFE5 /* Alarm.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5F7E71212BE22E1E00FBAFE5 /* Alarm.wav */; };
@@ -40,7 +38,6 @@
 /* Begin PBXFileReference section */
 		5F351FCD2BDA691C002C5FB3 /* InABlink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InABlink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F351FD02BDA691C002C5FB3 /* InABlinkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InABlinkApp.swift; sourceTree = "<group>"; };
-		5F351FD22BDA691C002C5FB3 /* LandingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingView.swift; sourceTree = "<group>"; };
 		5F351FD42BDA691D002C5FB3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F351FD72BDA691D002C5FB3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5F351FE72BDA9DC6002C5FB3 /* CGExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGExtension.swift; sourceTree = "<group>"; };
@@ -48,7 +45,6 @@
 		5F351FF12BDB88E2002C5FB3 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGrid.swift; sourceTree = "<group>"; };
 		5F616B592BDE198300E140D3 /* MathQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuiz.swift; sourceTree = "<group>"; };
-		5F616B5B2BDE458200E140D3 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		5F7E711C2BE224EB00FBAFE5 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		5F7E711E2BE229E200FBAFE5 /* Timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Timer.wav; path = InABlink/Sounds/Timer.wav; sourceTree = SOURCE_ROOT; };
 		5F7E71212BE22E1E00FBAFE5 /* Alarm.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Alarm.wav; sourceTree = "<group>"; };
@@ -141,7 +137,6 @@
 		5F351FF32BDB88EB002C5FB3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5F351FD22BDA691C002C5FB3 /* LandingView.swift */,
 				5F351FF12BDB88E2002C5FB3 /* GameView.swift */,
 				814933072BE0449200B5D260 /* SplashScreen.swift */,
 				5FEA4F492BE0D38800D03973 /* MenuView.swift */,
@@ -154,7 +149,6 @@
 			children = (
 				5F616B552BDDFF6A00E140D3 /* ColorGrid.swift */,
 				5F616B592BDE198300E140D3 /* MathQuiz.swift */,
-				5F616B5B2BDE458200E140D3 /* Tile.swift */,
 				5FEA4F3D2BDF8D8200D03973 /* PulsingCircle.swift */,
 				5FEA4F3F2BDFF87C00D03973 /* TimesUp.swift */,
 				5FEA4F472BE0AA0100D03973 /* Particle.swift */,
@@ -268,11 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				814933082BE0449200B5D260 /* SplashScreen.swift in Sources */,
-				5F351FD32BDA691C002C5FB3 /* LandingView.swift in Sources */,
 				5FEA4F482BE0AA0200D03973 /* Particle.swift in Sources */,
 				5F351FF02BDB799D002C5FB3 /* EyeBlinkDetection.swift in Sources */,
 				5F351FD12BDA691C002C5FB3 /* InABlinkApp.swift in Sources */,
-				5F616B5C2BDE458200E140D3 /* Tile.swift in Sources */,
 				5F616B562BDDFF6A00E140D3 /* ColorGrid.swift in Sources */,
 				5FEA4F4A2BE0D38800D03973 /* MenuView.swift in Sources */,
 				5FEA4F3E2BDF8D8200D03973 /* PulsingCircle.swift in Sources */,
@@ -423,6 +415,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InABlink/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = InABlink;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -434,11 +427,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Test1.InABlink;
+				PRODUCT_BUNDLE_IDENTIFIER = Echo.InABlink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -455,6 +452,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InABlink/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = InABlink;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Camera required for preview";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -466,11 +464,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Test1.InABlink;
+				PRODUCT_BUNDLE_IDENTIFIER = Echo.InABlink;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

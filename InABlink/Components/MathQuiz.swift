@@ -60,19 +60,19 @@ class MathQuiz: ObservableObject {
         for i in 0..<numElementTemp-1{
             switch operators[i]{
             case 2:
-                print("Menghitung: \(numbers[a])*\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])*\(numbers[a+1])")
                 numbers[a] = numbers[a]*numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             case 3:
-                print("Menghitung: \(numbers[a])/\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])/\(numbers[a+1])")
                 if numbers[a+1] == 0{
                     operators[i] = Int.random(in: 0...1)
                     a+=1
                     break
                 }
                 numbers[a] = numbers[a]/numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             default:
                 a+=1
@@ -84,23 +84,23 @@ class MathQuiz: ObservableObject {
         for i in 0..<numElementTemp-1{
             switch operators[i]{
             case 0:
-                print("Menghitung: \(numbers[a])+\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])+\(numbers[a+1])")
                 numbers[a] = numbers[a]+numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             case 1:
-                print("Menghitung: \(numbers[a])-\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])-\(numbers[a+1])")
                 numbers[a] = numbers[a]-numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             default:
                 break
             }
         }
         
-        print(numbersMem, operators)
+//        print(numbersMem, operators)
         
-        print(numbers)
+//        print(numbers)
         
         answers.append(numbers[0])
         
@@ -127,7 +127,7 @@ class MathQuiz: ObservableObject {
         equation.append(String(numbersMem.last!))
         equation.append(" = ___")
         
-        print(equation)
+//        print(equation)
         
         return
     }

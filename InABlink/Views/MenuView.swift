@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-func buttonPressed() {
-    print("buttonpressed")
-}
-
 //HEX COLOR CODE
 extension Color {
     init(hex: UInt, alpha: Double = 1) {

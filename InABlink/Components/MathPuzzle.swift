@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MathPuzzle: View {
-    @StateObject public var blinkDetection = FaceDetectionViewController()
+    @StateObject public var blinkDetection = BlinkDetection()
+    @State private var arSessionManager: ARSessionManager?
     @State private var circles: [[CircleDataMath]] = []
     @State private var correctCircleRow = 0
     @State private var correctCircleColumn = 0
@@ -91,13 +92,19 @@ struct MathPuzzle: View {
             }
             //            EffectView(correct: $winOrLose)
         }
+        .onAppear {
+            arSessionManager = ARSessionManager(blinkDetection: blinkDetection)
+        }
+        .onDisappear {
+            // Pause the AR session when the view disappears
+            arSessionManager?.pause()
+        }
     }
     
     func generateGrid() {
         circles = []
         let colors: [Color] = [.red, .green, .blue, .yellow, .cyan, .orange, .blue, .yellow, .cyan, Color("Lilac"), Color("LilacLight")]
         let correctNumberIndex = Int.random(in: 0..<gridCount * gridCount)
-        print("Terjalan!")
         
         var randNum = 0
         
@@ -117,7 +124,7 @@ struct MathPuzzle: View {
                             randNum = Int.random(in: -abs(answerCorrect*2)...abs(answerCorrect))
                         }while randNum==answerCorrect
                     }else{
-                        randNum = 1
+                        randNum = Int.random(in: -100...100)
                     }
                     
                     rowCircles.append(CircleDataMath(color: colors[Int.random(in: 0...10)], num: randNum))
@@ -196,19 +203,19 @@ struct MathPuzzle: View {
         for i in 0..<numElementTemp-1{
             switch operators[i]{
             case 2:
-                print("Menghitung: \(numbers[a])*\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])*\(numbers[a+1])")
                 numbers[a] = numbers[a]*numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             case 3:
-                print("Menghitung: \(numbers[a])/\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])/\(numbers[a+1])")
                 if numbers[a+1] == 0{
                     operators[i] = Int.random(in: 0...1)
                     a+=1
                     break
                 }
                 numbers[a] = numbers[a]/numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             default:
                 a+=1
@@ -220,23 +227,23 @@ struct MathPuzzle: View {
         for i in 0..<numElementTemp-1{
             switch operators[i]{
             case 0:
-                print("Menghitung: \(numbers[a])+\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])+\(numbers[a+1])")
                 numbers[a] = numbers[a]+numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             case 1:
-                print("Menghitung: \(numbers[a])-\(numbers[a+1])")
+//                print("Menghitung: \(numbers[a])-\(numbers[a+1])")
                 numbers[a] = numbers[a]-numbers[a+1]
-                print("telah terhitung \(numbers[a])")
+//                print("telah terhitung \(numbers[a])")
                 numbers.remove(at: a+1)
             default:
                 break
             }
         }
         
-        print(numbersMem, operators)
+//        print(numbersMem, operators)
         
-        print(numbers)
+//        print(numbers)
         
         answerCorrect = numbers[0]
         
@@ -269,7 +276,7 @@ struct MathPuzzle: View {
         equation.append(String(numbersMem.last!))
         equation.append(" =")
         
-        print(equation)
+//        print(equation)
         
         return
     }

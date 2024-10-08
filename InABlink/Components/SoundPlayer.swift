@@ -23,7 +23,7 @@ class SoundManager: ObservableObject {
                     self.stopPlayback()
                 }
             } catch {
-                print("Error: Could not find and play the sound file.")
+//                print("Error: Could not find and play the sound file.")
             }
         }
     }

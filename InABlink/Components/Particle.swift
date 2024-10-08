@@ -28,7 +28,6 @@ struct EffectView: View {
                 }
             }
             .onAppear(){
-                print("Terjalan!")
             }
         }.edgesIgnoringSafeArea(.all)
     }
